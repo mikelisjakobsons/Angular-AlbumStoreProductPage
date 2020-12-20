@@ -3,6 +3,7 @@ import { Http, Response } from '@angular/http';
 
 import { Album } from './album';
 import { Observable } from 'rxjs/Observable';
+import { Product } from './product';
 
 import 'rxjs/add/operator/map';
 
@@ -13,9 +14,14 @@ export class ProductService {
   }
     
   private _albumUrl: string = '../assets/album.json';
+  private _productsUrl: string = '../assets/products.json';
 
   getAlbum(id: number): Observable<Album> {
     return this._http.get(this._albumUrl).map(response => <Album>response.json());
+  }
+
+  getProducts(): Observable<Product[]> {
+    return this._http.get(this._productsUrl).map(response => <Product[]>response.json());
   }
 
 }
